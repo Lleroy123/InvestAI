@@ -58,4 +58,5 @@ def optimize(request: PortfolioRequest):
         return {"error": str(e)}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8080)
+    port = int(os.environ.get("PORT", 10000))  # Utilise PORT depuis Render
+    uvicorn.run(app, host="0.0.0.0", port=port)
