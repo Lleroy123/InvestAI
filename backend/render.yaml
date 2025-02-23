@@ -1,0 +1,4 @@
+services:
+  - name: backend
+    rootDirectory: backend # Assure-toi que c'est bien "backend"
+    startCommand: "cd backend && gunicorn -w 4 -k uvicorn.workers.UvicornWorker app:app --bind 0.0.0.0:8000"
