@@ -5,11 +5,19 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import minimize
 import uvicorn
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 app = FastAPI()
 
 class PortfolioRequest(BaseModel):
     assets: list
+
+@app.get("/test")
+def test():
+    return {"message": "API fonctionne parfaitement 🎉"}
 
 @app.get("/")
 def home():
