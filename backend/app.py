@@ -7,8 +7,11 @@ from scipy.optimize import minimize
 import uvicorn
 import sys
 import os
+from backend.app import app  # Assure-toi que c'est bien le bon chemin
 
-sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+# Ajoute le dossier parent au chemin d'importation
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 
 app = FastAPI()
 
@@ -59,4 +62,5 @@ def optimize(request: PortfolioRequest):
         return {"error": str(e)}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 10000))  # 10000 par défaut
+    uvicorn.run(app, host="0.0.0.0", port=port, reload=True)
