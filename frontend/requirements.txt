@@ -1,6 +1,0 @@
-fastapi
-uvicorn
-yfinance
-numpy
-pandas
-scipy
